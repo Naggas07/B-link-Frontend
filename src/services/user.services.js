@@ -16,7 +16,7 @@ const getBusiness = () => http.get("/user/business").then(business => business);
 
 const getUsers = () => http.get("/user/users").then(users => users);
 
-module.exports = {
+let UserServices = {
   singUp,
   login,
   logout,
@@ -25,3 +25,5 @@ module.exports = {
   getBusiness,
   getUsers
 };
+
+export default UserServices;

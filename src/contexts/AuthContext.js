@@ -1,5 +1,5 @@
 import React, { createContext, Component } from "react";
-import UserService from "../services/user.services";
+import UserServices from "../services/user.services";
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export class AuthContextProvider extends Component {
   };
 
   logout = () => {
-    UserService.logout().then(() => this.setUser());
+    UserServices.logout().then(() => this.setUser());
   };
 
   render() {

@@ -7,10 +7,13 @@ import { BrowserRouter } from "react-router-dom";
 // styles
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.min.css";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
