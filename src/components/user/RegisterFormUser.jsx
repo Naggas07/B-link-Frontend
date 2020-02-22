@@ -12,47 +12,103 @@ class RegisterUser extends Component {
       email: "",
       password: "",
       userType: "User",
-      avatar: ""
+      avatar: null
     },
     error: false,
     loading: false,
     success: false
   };
+
+  handelChange = event => {
+    const { name, value, files } = event.target;
+
+    this.setState({
+      userData: {
+        ...this.state.userData,
+        [name]: files ? files[0] : value
+      }
+    });
+  };
+
   render() {
     return (
       <form className="form-margins">
         <div className="form-group">
-          <label htmlFor="nickName">NickName</label>
-          <input type="text" className="form-control" name="nickName" />
+          <label htmlFor="nickName">Nickname</label>
+          <input
+            type="text"
+            className="form-control"
+            name="nickName"
+            value={this.state.userData.nickName}
+            onChange={this.handelChange}
+            autoComplete="off"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="name">name</label>
-          <input type="text" className="form-control" name="name" />
+          <input
+            type="text"
+            className="form-control"
+            name="name"
+            value={this.state.userData.name}
+            onChange={this.handelChange}
+            autoComplete="off"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="lastName1">lastName1</label>
-          <input type="text" className="form-control" name="lastName1" />
+          <input
+            type="text"
+            className="form-control"
+            name="lastName1"
+            value={this.state.userData.lastName1}
+            onChange={this.handelChange}
+            autoComplete="off"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="lastName2">lastName2</label>
-          <input type="text" className="form-control" name="lastName2" />
+          <input
+            type="text"
+            className="form-control"
+            name="lastName2"
+            value={this.state.userData.lastName2}
+            onChange={this.handelChange}
+            autoComplete="off"
+          />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="email"
+            value={this.state.userData.email}
+            onChange={this.handelChange}
+            autoComplete="off"
           />
         </div>
         <div className="form-group">
           <label htmlFor="Password">password</label>
-          <input type="password" className="form-control" name="Password" />
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            value={this.state.userData.password}
+            onChange={this.handelChange}
+            autoComplete="off"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="avatar">Avatar</label>
-          <input type="file" className="form-control" name="avatar" />
+          <input
+            type="file"
+            className="form-control"
+            name="avatar"
+            onChange={this.handelChange}
+            autoComplete="off"
+            id="avatar"
+          />
         </div>
         <button type="submit" className="btn btn-block btn-primary">
           Submit
