@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "../../styles/Forms.css";
+import UserServices from "../../services/user.services";
 
 class RegisterUser extends Component {
   state = {
@@ -11,7 +12,6 @@ class RegisterUser extends Component {
       lastName2: "",
       email: "",
       password: "",
-      userType: "User",
       avatar: null
     },
     error: false,
@@ -30,9 +30,35 @@ class RegisterUser extends Component {
     });
   };
 
+  handelSubmit = event => {
+    event.preventDefault();
+
+    const { userData } = this.state;
+
+    const formData = new FormData();
+    formData.append("nickName", userData.nickName);
+    formData.append("name", userData.name);
+    formData.append("lastName1", userData.lastName1);
+    formData.append("lastName2", userData.lastName2);
+    formData.append("avatar", userData.avatar);
+    formData.append("email", userData.email);
+    formData.append("password", userData.password);
+    formData.append("userType", "User");
+
+    this.setState({ loading: true, error: false }, () => {
+      UserServices.singUp(formData)
+        .then(() => {
+          this.setState({ success: true });
+        })
+        .catch(() => {
+          this.setState({ error: true, loading: false });
+        });
+    });
+  };
+
   render() {
     return (
-      <form className="form-margins">
+      <form className="form-margins" onSubmit={this.handelSubmit}>
         <div className="form-group">
           <label htmlFor="nickName">Nickname</label>
           <input
@@ -113,6 +139,7 @@ class RegisterUser extends Component {
         <button type="submit" className="btn btn-block btn-primary">
           Submit
         </button>
+        <a href="/login">Back to login</a>
       </form>
     );
   }

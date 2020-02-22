@@ -3,7 +3,10 @@ import http from "./global.variables";
 const singUp = userData =>
   http.post("/user/register", userData).then(user => user);
 
-const login = userData => http.post("/user/login", userData).then(user => user);
+const login = userData => {
+  console.log(userData);
+  return http.post("/user/login", userData).then(user => user.data);
+};
 
 const logout = () => http.post("/user/logout").then(notUser => notUser);
 

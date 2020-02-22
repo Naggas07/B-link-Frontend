@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 
 const AuthenticatedRoute = props => {
-  if (!props.CurrentUser) {
+  if (!props.currentUser) {
     return <Redirect to="/login" />;
   } else {
     return <Route {...props} />;
