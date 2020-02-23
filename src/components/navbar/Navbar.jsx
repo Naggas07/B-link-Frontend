@@ -70,7 +70,10 @@ const Nabvar = ({ logo, currentUser, logout }) => {
       {currentUser && (
         <div className="nav-items">
           <div className="user-nav">
-            <img src={currentUser.avatar} alt="avatar" />
+            <div className="avatar-container">
+              <img src={currentUser.avatar} alt="avatar" />
+            </div>
+
             <p>{currentUser.nickName}</p>
           </div>
           <button type="submit" onClick={logout} className="btn btn-danger">

@@ -18,6 +18,7 @@ const EventResume = ({ event, currentUser }) => {
     <Link to={`/events/detail/${event.id}`} id={event.id}>
       <div className="resume-container">
         <div className="image-container">
+          <div className="avatar-container-user"></div>
           <img src={event.image} alt="event" />
         </div>
         <div className="resume-info-container">
@@ -43,16 +44,22 @@ const EventResume = ({ event, currentUser }) => {
         </div>
         {currentUser.userType === "Admin" && (
           <div className="admin-buttons">
-            <button className="btn btn-danger">delete</button>
+            <button className="btn btn-danger">Borrar</button>
           </div>
         )}
 
         {currentUser.userType === "Business" &&
           currentUser.id === event.business && (
             <div className="businness-buttons">
-              <button className="btn btn-success">Edit</button>
+              <button className="btn btn-success">Editar</button>
             </div>
           )}
+
+        {currentUser.userType === "User" && (
+          <div className="user-buttons">
+            <button className="btn btn-info">Detalles</button>
+          </div>
+        )}
       </div>
     </Link>
   );

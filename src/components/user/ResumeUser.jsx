@@ -3,7 +3,10 @@ import React from "react";
 const ResumeUser = ({ user }) => {
   return (
     <div className="resume-user-container">
-      <img src={user.avatar} alt="avatar" />
+      <div className="avatar-container-resume">
+        <img src={user.avatar} alt="avatar" />
+      </div>
+
       <div className="description">
         <p> {`${user.name} ${user.lastName1} ${user.lastName2}`}</p>
         <p> {`@${user.nickName}`}</p>

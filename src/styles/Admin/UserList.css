@@ -15,11 +15,20 @@
   align-items: center;
 }
 
-.resume-user-container img {
+.avatar-container-resume {
   width: 100px;
   max-width: 100px;
   max-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   border-radius: 50%;
+}
+
+.avatar-container-resume img {
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .resume-user-container .description {
