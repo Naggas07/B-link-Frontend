@@ -36,7 +36,6 @@ class Login extends Component {
     this.setState({ loading: true, error: false }, () => {
       UserServices.login(userData)
         .then(user => {
-          console.log(user);
           this.props.setUser(user);
         })
         .catch(() => {
@@ -46,7 +45,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
     if (this.props.currentUser) {
       return <Redirect to="/user" />;
     }

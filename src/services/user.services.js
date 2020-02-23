@@ -4,16 +4,15 @@ const singUp = userData =>
   http.post("/user/register", userData).then(user => user);
 
 const login = userData => {
-  console.log(userData);
   return http.post("/user/login", userData).then(user => user.data);
 };
 
-const logout = () => http.post("/user/logout").then(notUser => notUser);
+const logout = () => http.post("/user/logout");
 
 const update = (userData, id) =>
   http.put(`/user/update/${id}`, userData).then(user => user);
 
-const getAllUsers = () => http.get(`/user`).then(users => users);
+const getAllUsers = () => http.get(`/user`);
 
 const getBusiness = () => http.get("/user/business").then(business => business);
 
