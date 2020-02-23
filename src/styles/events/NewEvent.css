@@ -1,0 +1,40 @@
+.event-form {
+  margin-top: 20px;
+}
+
+.business-resume {
+  width: 100%;
+  height: 50px;
+  background-color: grey;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-event {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.group-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.check-style label {
+  margin-left: 7px;
+}
+
+.media-items {
+  width: 40%;
+  float: left;
+  margin: 0% 5%;
+}
+
+.container-checks {
+  padding: 0 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

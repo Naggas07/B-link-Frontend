@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TopicSevices from "../../services/topics.sevices";
 import eventServices from "../../services/events.services";
 import EventResume from "./EventResume";
+import { WithAuthConsumer } from "../../contexts/AuthContext";
 
 class SearchEvent extends Component {
   state = {
@@ -34,7 +35,15 @@ class SearchEvent extends Component {
         </div>
 
         <div className="container">
-          <h3>Eventos</h3>
+          <div className="header-events">
+            <h3>Eventos</h3>
+            {this.props.currentUser.userType === "Admin" ||
+              (this.props.currentUser.userType === "Business" && (
+                <a href="/events/new" className="btn btn-dark">
+                  Create
+                </a>
+              ))}
+          </div>
           {this.state.events.map((event, i) => (
             <EventResume key={i} event={event} />
           ))}
@@ -44,4 +53,4 @@ class SearchEvent extends Component {
   }
 }
 
-export default SearchEvent;
+export default WithAuthConsumer(SearchEvent);

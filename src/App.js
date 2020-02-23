@@ -10,6 +10,7 @@ import Nabvar from "./components/navbar/Navbar";
 import AuthenticatedRoute from "./components/misc/Authenticated.route";
 import Home from "./components/user/Home";
 import Admin from "./components/user/Admin";
+import NewEvent from "./components/events/NewEvent";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       <Switch>
         <AuthenticatedRoute exact path="/user">
           <Home />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute exact path="/events/new">
+          <NewEvent />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/events">
           <SearchEvent />

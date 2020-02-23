@@ -31,6 +31,14 @@
   justify-content: space-around;
 }
 
+.header-events {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 2px solid grey;
+}
+
 .search-events {
   padding: 20px;
   width: 100%;
