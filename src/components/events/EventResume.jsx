@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "../../styles/events/EventResume.css";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import EventDetail from "./EventDetail";
 
 const EventResume = ({ event, currentUser }) => {
   let options = {
@@ -14,7 +15,7 @@ const EventResume = ({ event, currentUser }) => {
   };
 
   return (
-    <Link to={`/events/detail/${event.id}`}>
+    <Link to={`/events/detail/${event.id}`} id={event.id}>
       <div className="resume-container">
         <div className="image-container">
           <img src={event.image} alt="event" />

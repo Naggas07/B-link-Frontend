@@ -16,13 +16,16 @@ const reserveEvent = id =>
 const unsuscribeEvent = id =>
   http.put(`/events/reserve/${id}`).then(updated => updated.data);
 
+const eventDetail = id => http.get(`/events/${id}`).then(event => event.data);
+
 let eventServices = {
   getEvents,
   newEvent,
   userEvents,
   deleteEvent,
   reserveEvent,
-  unsuscribeEvent
+  unsuscribeEvent,
+  eventDetail
 };
 
 export default eventServices;
