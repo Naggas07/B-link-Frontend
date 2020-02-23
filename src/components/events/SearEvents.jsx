@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TopicSevices from "../../services/topics.sevices";
+import eventServices from "../../services/events.services";
+import EventResume from "./EventResume";
 
 class SearchEvent extends Component {
   state = {
@@ -13,13 +15,19 @@ class SearchEvent extends Component {
         topics
       })
     );
+
+    eventServices.getEvents().then(events => this.setState({ events }));
   }
 
   render() {
     return (
-      <div>
-        {this.state.topics.map(topic => (
-          <h2>{topic.name}</h2>
+      <div className="container">
+        {this.state.topics.map((topic, i) => (
+          <h2 key={i}>{topic.name}</h2>
+        ))}
+
+        {this.state.events.map((event, i) => (
+          <EventResume key={i} event={event} />
         ))}
       </div>
     );

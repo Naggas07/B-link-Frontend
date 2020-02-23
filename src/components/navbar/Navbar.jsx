@@ -29,27 +29,27 @@ const Nabvar = ({ logo, currentUser, logout }) => {
                 <NavLink
                   className="nav-link"
                   activeClassName="font-weight-bold"
-                  to="/catalog"
+                  to="/friends"
                 >
-                  Catalog
+                  Friends
                 </NavLink>
               </li>
               <li className="nav-item active">
                 <NavLink
                   className="nav-link"
                   activeClassName="font-weight-bold"
-                  to="/about"
+                  to="/follows"
                 >
-                  About
+                  Follows
                 </NavLink>
               </li>
               <li className="nav-item active">
                 <NavLink
                   className="nav-link"
                   activeClassName="font-weight-bold"
-                  to="/where"
+                  to="/config"
                 >
-                  Where
+                  Config
                 </NavLink>
               </li>
               {currentUser.userType === "Admin" && (

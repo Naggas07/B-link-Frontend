@@ -12,7 +12,11 @@ const logout = () => http.post("/user/logout");
 const update = (userData, id) =>
   http.put(`/user/update/${id}`, userData).then(user => user);
 
-const getAllUsers = () => http.get(`/user`);
+const getAllUsers = () =>
+  http.get("/user").then(users => {
+    console.log(users.data);
+    return users.data;
+  });
 
 const getBusiness = () => http.get("/user/business").then(business => business);
 

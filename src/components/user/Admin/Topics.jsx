@@ -16,10 +16,12 @@ class Topics extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.state.topics.map((topic, i) => (
           <h2 key={i}>{topic.name}</h2>
         ))}
+
+        {/* pendiente de ver como presentarlos para poder administrarlos */}
       </div>
     );
   }

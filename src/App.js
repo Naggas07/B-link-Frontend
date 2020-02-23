@@ -32,6 +32,7 @@ function App() {
         <Route exact path="/register">
           <RegisterLoginContainer right={<RegisterUser />} />
         </Route>
+        <Redirect to="/login" />
       </Switch>
     </div>
   );
