@@ -26,9 +26,12 @@ class SearchEvent extends Component {
           <h2 key={i}>{topic.name}</h2>
         ))}
 
-        {this.state.events.map((event, i) => (
-          <EventResume key={i} event={event} />
-        ))}
+        <div className="container">
+          <h3>Eventos</h3>
+          {this.state.events.map((event, i) => (
+            <EventResume key={i} event={event} />
+          ))}
+        </div>
       </div>
     );
   }

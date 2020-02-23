@@ -20,7 +20,7 @@ function App() {
         <AuthenticatedRoute exact path="/user">
           <Home />
         </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/events">
+        <AuthenticatedRoute path="/events">
           <SearchEvent />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/admin">
