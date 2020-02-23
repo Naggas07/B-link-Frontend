@@ -1,7 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Home = () => {
-  return <h1>Hellow desde user logged</h1>;
-};
+class Home extends Component {
+  state = {
+    friends: [],
+    events: [],
+    follows: []
+  };
+  render() {
+    return (
+      <div className="container">
+        <div className="user-friends">friends</div>
+        <div className="user-events">Events</div>
+        <div className="user-follows">Follows</div>
+      </div>
+    );
+  }
+}
 
 export default Home;

@@ -11,6 +11,7 @@ import AuthenticatedRoute from "./components/misc/Authenticated.route";
 import Home from "./components/user/Home";
 import Admin from "./components/user/Admin";
 import NewEvent from "./components/events/NewEvent";
+import EventDetail from "./components/events/EventDetail";
 
 function App() {
   return (
@@ -24,7 +25,10 @@ function App() {
         <AuthenticatedRoute exact path="/events/new">
           <NewEvent />
         </AuthenticatedRoute>
-        <AuthenticatedRoute exact path="/events">
+        <AuthenticatedRoute path="/events/detail">
+          <EventDetail />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/events">
           <SearchEvent />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/admin">
