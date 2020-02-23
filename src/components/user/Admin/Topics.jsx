@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TopicSevices from "../../../services/topics.sevices";
+import TopicDetail from "./TopicDetail";
+import "../../../styles/Admin/Topics.css";
 
 class Topics extends Component {
   state = {
@@ -17,11 +19,18 @@ class Topics extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.topics.map((topic, i) => (
-          <h2 key={i}>{topic.name}</h2>
-        ))}
+        <div className="create-topic">
+          <a href="/admin/topics/new" className="btn btn-success">
+            New topic
+          </a>
+        </div>
+        <div className="container topics-global-container">
+          {this.state.topics.map((topic, i) => (
+            <TopicDetail topic={topic} key={i} />
+          ))}
 
-        {/* pendiente de ver como presentarlos para poder administrarlos */}
+          {/* pendiente de ver como presentarlos para poder administrarlos */}
+        </div>
       </div>
     );
   }

@@ -3,6 +3,9 @@ import SideBarAdmin from "./Admin/SidebarAdmin";
 import { Switch, Route } from "react-router-dom";
 import Topics from "./Admin/Topics";
 import AllUsers from "./Admin/AllUsers";
+import Users from "./Admin/Users";
+import Business from "./Admin/Business";
+import SearEvents from "../events/SearEvents";
 
 const admin = () => {
   return (
@@ -14,6 +17,15 @@ const admin = () => {
         </Route>
         <Route exact path="/admin/total-users">
           <AllUsers />
+        </Route>
+        <Route exact path="/admin/users">
+          <Users />
+        </Route>
+        <Route exact path="/admin/business">
+          <Business />
+        </Route>
+        <Route exact path="/admin/events">
+          <SearEvents />
         </Route>
       </Switch>
     </div>

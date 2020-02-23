@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "../../styles/Forms.css";
 import UserServices from "../../services/user.services";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 class RegisterUser extends Component {
   state = {

@@ -24,7 +24,7 @@ function App() {
         <AuthenticatedRoute exact path="/events/new">
           <NewEvent />
         </AuthenticatedRoute>
-        <AuthenticatedRoute path="/events">
+        <AuthenticatedRoute exact path="/events">
           <SearchEvent />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/admin">

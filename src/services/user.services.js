@@ -14,13 +14,13 @@ const update = (userData, id) =>
 
 const getAllUsers = () =>
   http.get("/user").then(users => {
-    console.log(users.data);
     return users.data;
   });
 
-const getBusiness = () => http.get("/user/business").then(business => business);
+const getBusiness = () =>
+  http.get("/user/business").then(business => business.data);
 
-const getUsers = () => http.get("/user/users").then(users => users);
+const getUsers = () => http.get("/user/users").then(users => users.data);
 
 let UserServices = {
   singUp,

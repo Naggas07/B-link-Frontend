@@ -3,13 +3,13 @@ import UserServices from "../../../services/user.services";
 import ResumeUser from "../ResumeUser";
 import "../../../styles/Admin/UserList.css";
 
-class AllUsers extends Component {
+class Business extends Component {
   state = {
     users: [0]
   };
 
   componentDidMount() {
-    UserServices.getAllUsers().then(users =>
+    UserServices.getBusiness().then(users =>
       this.setState({
         users
       })
@@ -33,4 +33,4 @@ class AllUsers extends Component {
   }
 }
 
-export default AllUsers;
+export default Business;
