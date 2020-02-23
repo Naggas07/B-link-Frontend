@@ -22,9 +22,16 @@ class SearchEvent extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.topics.map((topic, i) => (
-          <h2 key={i}>{topic.name}</h2>
-        ))}
+        <div className="search-events">
+          <input type="text" />
+        </div>
+        <div className="container topic-container">
+          {this.state.topics.map((topic, i) => (
+            <span key={i} className="badge badge-pill badge-info">
+              {topic.name}
+            </span>
+          ))}
+        </div>
 
         <div className="container">
           <h3>Eventos</h3>

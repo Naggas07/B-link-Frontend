@@ -19,3 +19,23 @@
 .resume-info-container {
   width: 80%;
 }
+
+.event-item-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.topic-container {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-events {
+  padding: 20px;
+  width: 100%;
+}
+
+.search-events input {
+  width: 100%;
+}

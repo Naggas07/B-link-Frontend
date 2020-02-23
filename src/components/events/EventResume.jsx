@@ -20,9 +20,23 @@ const EventResume = ({ event, currentUser }) => {
       <div className="resume-info-container">
         <h6>{event.title}</h6>
         <p>{new Date(event.date).toLocaleString("es-ES", options)}</p>
-        <p>{event.limitUsers}</p>
-        <p>{event.limitUsers - event.reserves.length}</p>
-        <p>{event.price}</p>
+        <div className="event-item-list">
+          <p>
+            <i
+              className="fa fa-users"
+              aria-hidden="true"
+            >{` ${event.limitUsers}`}</i>
+          </p>
+          <p>
+            <i className="fa fa-object-group" aria-hidden="true"></i>
+            {` ${event.limitUsers - event.reserves.length}`}
+          </p>
+          <p>
+            <i className="fa fa-money" aria-hidden="true">
+              {`  ${event.price}`} €
+            </i>
+          </p>
+        </div>
       </div>
       {currentUser.userType === "Admin" && (
         <div className="admin-buttons">
