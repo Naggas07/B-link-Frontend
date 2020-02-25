@@ -18,6 +18,9 @@ const unsuscribeEvent = id =>
 
 const eventDetail = id => http.get(`/events/${id}`).then(event => event.data);
 
+const eventByPosition = parameters =>
+  http.post("/events/locations", parameters).then(events => events.data);
+
 let eventServices = {
   getEvents,
   newEvent,
@@ -25,7 +28,8 @@ let eventServices = {
   deleteEvent,
   reserveEvent,
   unsuscribeEvent,
-  eventDetail
+  eventDetail,
+  eventByPosition
 };
 
 export default eventServices;
