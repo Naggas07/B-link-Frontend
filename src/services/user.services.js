@@ -22,6 +22,8 @@ const getBusiness = () =>
 
 const getUsers = () => http.get("/user/users").then(users => users.data);
 
+const deleteUser = id => http.delete(`/user/delete/${id}`);
+
 let UserServices = {
   singUp,
   login,
@@ -29,7 +31,8 @@ let UserServices = {
   update,
   getAllUsers,
   getBusiness,
-  getUsers
+  getUsers,
+  deleteUser
 };
 
 export default UserServices;
