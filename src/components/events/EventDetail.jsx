@@ -8,7 +8,6 @@ class EventDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id: "5e482b752bd0f608849ab67a",
       event: []
     };
   }
