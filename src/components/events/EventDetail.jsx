@@ -1,19 +1,22 @@
 import React from "react";
 import { Component } from "react";
 import eventServices from "../../services/events.services";
+import { WithAuthConsumer } from "../../contexts/AuthContext";
 import "../../styles/events/EventDetail.css";
 
 class EventDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "5e482b752bd0f608849ab67a",
+      // id: "5e482b752bd0f608849ab67a",
       event: []
     };
   }
 
   componentDidMount() {
-    eventServices.eventDetail(this.state.id).then(event => {
+    const id = window.location.pathname.split("/").reverse();
+    // console.info("id => ", id[0]);
+    eventServices.eventDetail(id[0]).then(event => {
       this.setState({ event });
     });
   }
@@ -31,4 +34,4 @@ class EventDetail extends Component {
   }
 }
 
-export default EventDetail;
+export default WithAuthConsumer(EventDetail);

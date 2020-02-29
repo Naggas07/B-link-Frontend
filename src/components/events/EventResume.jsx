@@ -15,7 +15,7 @@ const EventResume = ({ event, currentUser }) => {
   };
 
   return (
-    <Link to={`/events/detail/${event.id}`} id={event.id}>
+    <Link to={`/events/detail/${event.id}`} params={{ id: event.id }}>
       <div className="resume-container">
         <div className="image-container">
           <div className="avatar-container-user"></div>

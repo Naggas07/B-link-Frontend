@@ -26,7 +26,7 @@ function App() {
           <NewEvent />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/events/detail">
-          <EventDetail />
+          {props => <EventDetail {...props} />}
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/events">
           <SearchEvent />
