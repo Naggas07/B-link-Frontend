@@ -7,6 +7,8 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 
 // styles
 import "bootstrap/dist/css/bootstrap.css";
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/js/bootstrap.min.js";
 import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(

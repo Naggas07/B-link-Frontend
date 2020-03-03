@@ -6,7 +6,6 @@ import AllUsers from "./Admin/AllUsers";
 import Users from "./Admin/Users";
 import Business from "./Admin/Business";
 import SearEvents from "../events/SearEvents";
-import NewTopic from "../NewTopic";
 
 const admin = () => {
   return (
