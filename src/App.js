@@ -38,7 +38,10 @@ function App() {
           <RegisterLoginContainer right={<Login />} />
         </Route>
         <Route exact path="/register">
-          <RegisterLoginContainer right={<RegisterUser />} />
+          <RegisterLoginContainer right={<RegisterUser type="User" />} />
+        </Route>
+        <Route exact path="/business">
+          <RegisterLoginContainer right={<RegisterUser type="Business" />} />
         </Route>
         <Redirect to="/login" />
       </Switch>

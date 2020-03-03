@@ -13,7 +13,8 @@ class RegisterUser extends Component {
       lastName2: "",
       email: "",
       password: "",
-      avatar: null
+      avatar: null,
+      userType: this.props.type
     },
     error: false,
     loading: false,
@@ -44,7 +45,7 @@ class RegisterUser extends Component {
     formData.append("avatar", userData.avatar);
     formData.append("email", userData.email);
     formData.append("password", userData.password);
-    formData.append("userType", "User");
+    formData.append("userType", userData.userType);
 
     this.setState({ loading: true, error: false }, () => {
       UserServices.singUp(formData)

@@ -76,9 +76,14 @@ class Login extends Component {
           <button type="submit" className="btn btn-block btn-primary">
             Login
           </button>
-          <a className="mt-5" href="/register">
-            Create Account
-          </a>
+          <div className="container-register-links">
+            <a className="mt-5" href="/register">
+              Create Account
+            </a>
+            <a className="mt-5" href="/business">
+              Are you a business?
+            </a>
+          </div>
         </form>
       </Fragment>
     );
