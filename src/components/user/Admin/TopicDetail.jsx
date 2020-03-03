@@ -5,10 +5,17 @@ import topicsSevices from "../../../services/topics.sevices";
 
 class TopicDetail extends Component {
   state = {
-    topic: this.props.topic
+    topic: {
+      name: '',
+      state: ''
+    }
   };
 
-  handelChange = event => {
+  componentDidMount() {
+    this.setState({ topic: this.props.topic })
+  }
+
+  handleChange = event => {
     const { name, value, files } = event.target;
 
     this.setState({
@@ -19,12 +26,10 @@ class TopicDetail extends Component {
     });
   };
 
-  handelSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
 
     const { topic } = this.state;
-
-    console.log(topic);
 
     this.setState({ error: false }, () => {
       topicsSevices
@@ -40,6 +45,8 @@ class TopicDetail extends Component {
 
   render() {
     const { topic } = this.state;
+    const { handleSubmit, handleChange } = this
+    
     return (
       <div className="card text-white bg-info mb-3 topics-container">
         <div className="card-header topics">
@@ -47,66 +54,18 @@ class TopicDetail extends Component {
           <button
             className="btn btn-secondary"
             data-toggle="modal"
-            data-target="#editTopic"
-          >
-            Edit
-          </button>
-
+            data-target={`#editTopic-${this.props.index}`}>Edit</button>
+          
           <div
             className="modal fade"
-            id="editTopic"
+            id={`editTopic-${this.props.index}`}
             tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
-            aria-hidden="false"
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Editar tema</h5>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <form className="container" onSubmit={this.handelSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="name">Nombre del tema</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="name"
-                        value={topic.name}
-                        onChange={this.handelChange}
-                        autoComplete="off"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="state">Estado</label>
-                      <select
-                        className="form-control"
-                        name="state"
-                        value={topic.state}
-                        onChange={this.handelChange}
-                      >
-                        <option>Active</option>
-                        <option>Inactive</option>
-                      </select>
-                    </div>
-                    <div className="modal-footer">
-                      <button type="submit" className="btn btn-success">
-                        Editar
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+            aria-hidden="false">
+
+          <ModalContent {...{ topic, handleSubmit, handleChange }} />
+          
           </div>
         </div>
 
@@ -124,6 +83,57 @@ class TopicDetail extends Component {
       </div>
     );
   }
+}
+
+const ModalContent = ({ topic, handleSubmit, handleChange }) => {
+  return (
+    <div className="modal-dialog" role="document">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title">Editar tema</h5>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="modal"
+            aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div className="modal-body">
+          <form className="container" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Nombre del tema</label>
+              <input
+                type="text"
+                className="form-control"
+                name="name"
+                value={topic.name}
+                onChange={handleChange}
+                autoComplete="off"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="state">Estado</label>
+              <select
+                className="form-control"
+                name="state"
+                value={topic.state}
+                onChange={handleChange}
+              >
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+            <div className="modal-footer">
+              <button type="submit" className="btn btn-success">
+                Editar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default TopicDetail;

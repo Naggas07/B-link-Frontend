@@ -30,24 +30,24 @@ class NewEvent extends Component {
     const { events } = this.state;
     console.log(events);
     const formData = new FormData();
-    // formData.append("title", events.title);
-    // formData.append("topics", events.topics);
-    // formData.append("date", events.date);
-    // formData.append("image", events.image);
-    // formData.append("limitUser", events.limitUser);
-    // formData.append("hour", events.hour);
-    // formData.append("price", events.price);
-    // formData.append("business", events.business);
+    formData.append("title", events.title);
+    formData.append("topics", events.topics);
+    formData.append("date", events.date);
+    formData.append("image", events.image);
+    formData.append("limitUser", parseInt(events.limitUser));
+    formData.append("hour", events.hour);
+    formData.append("price", events.price);
+    formData.append("business", events.business);
 
     // fallaba el append
-    formData.title = events.title;
-    formData.topics = events.topics;
-    formData.date = events.date;
-    formData.image = events.image;
-    formData.limitUser = events.limitUser;
-    formData.hour = events.hour;
-    formData.price = events.price;
-    formData.business = events.business;
+    // formData.title = events.title;
+    // formData.topics = events.topics;
+    // formData.date = events.date;
+    // formData.image = events.image;
+    // formData.limitUser = events.limitUser;
+    // formData.hour = events.hour;
+    // formData.price = events.price;
+    // formData.business = events.business;
 
     console.log(formData);
 
@@ -114,7 +114,7 @@ class NewEvent extends Component {
           <div className="container map-container-event">
             <Map />
           </div>
-          <div className="form-group">
+          <div className="form-group container">
             <div className="row">
               <legend className="col-form-label col-sm-2 pt-0">
                 Temas relacionados

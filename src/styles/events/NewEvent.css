@@ -40,7 +40,12 @@
 }
 
 .map-container-event {
-  width: 1000px;
+  width: 1140px;
   height: 400px;
   display: flex;
+}
+
+.map-container-event > div > div {
+  max-height: 400px;
+  overflow: hidden;
 }

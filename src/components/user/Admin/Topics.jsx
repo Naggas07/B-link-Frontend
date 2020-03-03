@@ -111,10 +111,8 @@ class Topics extends Component {
         </div>
         <div className="container topics-global-container">
           {this.state.topics.map((topic, i) => (
-            <TopicDetail topic={topic} key={i} />
+            <TopicDetail topic={topic} index={i} key={i} />
           ))}
-
-          {/* pendiente de ver como presentarlos para poder administrarlos */}
         </div>
       </div>
     );
