@@ -34,7 +34,7 @@ class NewEvent extends Component {
     formData.append("topics", events.topics);
     formData.append("date", events.date);
     formData.append("image", events.image);
-    formData.append("limitUser", parseInt(events.limitUser));
+    formData.append("limitUsers", parseInt(events.limitUser));
     formData.append("hour", events.hour);
     formData.append("price", events.price);
     formData.append("business", events.business);
