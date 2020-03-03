@@ -65,7 +65,7 @@ class NewEvent extends Component {
   };
 
   componentDidMount() {
-    topicsSevices.getTopics().then(topics => this.setState({ topics }));
+    topicsSevices.activeTopics().then(topics => this.setState({ topics }));
   }
 
   handleChange = event => {

@@ -14,7 +14,7 @@ class SearchEvent extends Component {
   };
 
   componentDidMount() {
-    TopicSevices.getTopics().then(topics =>
+    TopicSevices.activeTopics().then(topics =>
       this.setState({
         topics
       })

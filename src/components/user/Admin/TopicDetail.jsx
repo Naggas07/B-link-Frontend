@@ -51,6 +51,7 @@ class TopicDetail extends Component {
           >
             Edit
           </button>
+
           <div
             className="modal fade"
             id="editTopic"
