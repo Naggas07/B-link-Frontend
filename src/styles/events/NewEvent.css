@@ -38,3 +38,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.map-container-event {
+  width: 1000px;
+  height: 400px;
+  display: flex;
+}

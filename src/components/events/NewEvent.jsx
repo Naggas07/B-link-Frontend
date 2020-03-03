@@ -3,6 +3,8 @@ import "../../styles/events/NewEvent.css";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import topicsSevices from "../../services/topics.sevices";
 import eventServices from "../../services/events.services";
+import { Redirect } from "react-router-dom";
+import Map from "../Map";
 
 class NewEvent extends Component {
   state = {
@@ -28,21 +30,38 @@ class NewEvent extends Component {
     const { events } = this.state;
     console.log(events);
     const formData = new FormData();
-    formData.append("title", this.state.events.title);
-    console.log(formData.title);
+    // formData.append("title", events.title);
+    // formData.append("topics", events.topics);
+    // formData.append("date", events.date);
+    // formData.append("image", events.image);
+    // formData.append("limitUser", events.limitUser);
+    // formData.append("hour", events.hour);
+    // formData.append("price", events.price);
+    // formData.append("business", events.business);
+
+    // fallaba el append
+    formData.title = events.title;
+    formData.topics = events.topics;
+    formData.date = events.date;
+    formData.image = events.image;
+    formData.limitUser = events.limitUser;
+    formData.hour = events.hour;
+    formData.price = events.price;
+    formData.business = events.business;
 
     console.log(formData);
 
-    // this.setState({ loading: true, error: false }, () => {
-    //   eventServices
-    //     .newEvent(formData)
-    //     .then(() => {
-    //       this.setState({ success: true });
-    //     })
-    //     .catch(() => {
-    //       this.setState({ error: true, loading: false });
-    //     });
-    // });
+    this.setState({ loading: true, error: false }, () => {
+      console.log(formData);
+      eventServices
+        .newEvent(formData)
+        .then(() => {
+          this.setState({ success: true });
+        })
+        .catch(() => {
+          this.setState({ error: true, loading: false });
+        });
+    });
   };
 
   componentDidMount() {
@@ -60,6 +79,10 @@ class NewEvent extends Component {
     });
   };
   render() {
+    if (this.state.success) {
+      return <Redirect to="/events" />;
+    }
+
     return (
       <div className="container event-form">
         <div className="business-resume">
@@ -87,6 +110,9 @@ class NewEvent extends Component {
               autoComplete="off"
               id="image"
             />
+          </div>
+          <div className="container map-container-event">
+            <Map />
           </div>
           <div className="form-group">
             <div className="row">

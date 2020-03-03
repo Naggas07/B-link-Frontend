@@ -7,7 +7,10 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 class SearchEvent extends Component {
   state = {
     events: [],
-    topics: []
+    topics: [],
+    form: {
+      search: ""
+    }
   };
 
   componentDidMount() {
@@ -26,6 +29,7 @@ class SearchEvent extends Component {
         <div className="search-events">
           <input type="text" />
         </div>
+
         <div className="container topic-container">
           {this.state.topics.map((topic, i) => (
             <span key={i} className="badge badge-pill badge-info">
@@ -35,6 +39,12 @@ class SearchEvent extends Component {
         </div>
 
         <div className="container">
+          {(this.props.currentUser.userType === "Admin" ||
+            this.props.currentUser.userType === "Business") && (
+            <a href="/events/new" className="btn btn-success">
+              New Event
+            </a>
+          )}
           <div className="header-events">
             <h3>Eventos</h3>
             {this.props.currentUser.userType === "Admin" ||

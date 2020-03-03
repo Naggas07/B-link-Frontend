@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "../../styles/Forms.css";
 import UserServices from "../../services/user.services";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class RegisterUser extends Component {
   state = {
@@ -46,8 +46,6 @@ class RegisterUser extends Component {
     formData.append("password", userData.password);
     formData.append("userType", "User");
 
-    console.log(formData);
-
     this.setState({ loading: true, error: false }, () => {
       UserServices.singUp(formData)
         .then(() => {
@@ -60,6 +58,9 @@ class RegisterUser extends Component {
   };
 
   render() {
+    if (this.state.success) {
+      return <Redirect to="/login" />;
+    }
     return (
       <form className="form-margins" onSubmit={this.handelSubmit}>
         <div className="form-group">

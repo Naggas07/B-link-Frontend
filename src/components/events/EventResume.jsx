@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "../../styles/events/EventResume.css";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
-import EventDetail from "./EventDetail";
 
 const EventResume = ({ event, currentUser }) => {
   let options = {

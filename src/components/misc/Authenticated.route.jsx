@@ -11,3 +11,6 @@ const AuthenticatedRoute = props => {
 };
 
 export default WithAuthConsumer(AuthenticatedRoute);
+
+// const showPosition = ({ coords: { latitude, longitude } }) => console.info(`Latitude: ${latitude} | Longitude: ${longitude}`)
+// navigator.geolocation.getCurrentPosition(showPosition)
