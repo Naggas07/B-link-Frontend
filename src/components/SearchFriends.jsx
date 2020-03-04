@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import UserServices from "../services/user.services";
 
 import "../styles/Friends.css";
@@ -36,7 +36,21 @@ class SearchFriends extends Component {
   }
 
   render() {
-    console.log(this.state.users);
+    const friends = this.state.friends.map(friendship => {
+      if (friendship.user1.id === this.props.currentUser.id) {
+        return friendship.user2;
+      } else {
+        return friendship.user1;
+      }
+    });
+
+    const pendigns = this.state.pendings.map(friendship => {
+      if (friendship.user1.id === this.props.currentUser.id) {
+        return friendship.user2;
+      } else {
+        return friendship.user1;
+      }
+    });
     return (
       <div className="container">
         <div className="container form-user">
@@ -57,20 +71,38 @@ class SearchFriends extends Component {
           </form>
         </div>
         {this.state.pendings.length > 0 && (
-          <div className="header-events">
+          <Fragment>
             <h3>{`Pendientes - ${this.state.pendings.length}`}</h3>
-          </div>
+            <div className="total-pendings-container">
+              {pendigns.map((user, i) => (
+                <UserDetail
+                  key={i}
+                  user={user}
+                  friendship={this.state.pendings[i]}
+                />
+              ))}
+            </div>
+          </Fragment>
         )}
         {this.state.friends.length > 0 && (
-          <div className="header-events">
+          <Fragment>
             <h3>{`Mis Amigos - ${this.state.friends.length}`}</h3>
-          </div>
+            <div className="total-friends-container">
+              {friends.map((user, i) => (
+                <UserDetail
+                  key={i}
+                  user={user}
+                  friendship={this.state.friends[i]}
+                />
+              ))}
+            </div>
+          </Fragment>
         )}
 
         <h3>Usuarios</h3>
         <div className="total-users-container">
           {this.state.users.map((user, i) => (
-            <UserDetail key={i} user={user} />
+            <UserDetail key={i} user={user} friendship={{}} />
           ))}
         </div>
       </div>

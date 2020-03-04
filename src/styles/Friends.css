@@ -23,7 +23,12 @@
 }
 
 .user-card {
+  margin: 10px;
   width: 240px;
+  padding: 5px;
+  background-color: rgb(182, 181, 181, 0.4);
+  border-radius: 5px;
+  border: 1px solid rgb(182, 181, 181, 1);
 }
 
 .card-img-container {
@@ -38,4 +43,13 @@
 
 .card-img-container > img {
   height: 180px;
+}
+
+.user-items {
+  padding: 4px;
+  text-align: center;
+}
+
+.user-items > p {
+  font-size: 0.7rem;
 }

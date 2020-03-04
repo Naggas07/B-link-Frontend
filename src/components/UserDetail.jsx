@@ -1,6 +1,7 @@
 import React from "react";
+import { WithAuthConsumer } from "../contexts/AuthContext";
 
-const UserDetail = ({ user }) => {
+const UserDetail = ({ user, friendship, currentUser }) => {
   return (
     <div className="user-card">
       <div className="card-img-container">
@@ -8,13 +9,25 @@ const UserDetail = ({ user }) => {
       </div>
       <div className="user-items">
         <h5>@{user.nickName}</h5>
-        <p>{`${user.name} ${user.LastName1} ${user.LastName2}`}</p>
+        <p>{`${user.name} ${user.lastName1} ${user.lastName2}`}</p>
         <div className="button-card">
-          <button className="btn btn-success">Ver</button>
+          {!friendship.state1 && (
+            <button className="btn btn-success btn-block">
+              Solicitar Amistad
+            </button>
+          )}
+          {friendship.state1 === "Pending" &&
+            currentUser.id === friendship.user1.id && (
+              <button className="btn btn-success btn-block">Pending</button>
+            )}
+          {friendship.state2 === "Pending" &&
+            currentUser.id === friendship.user2.id && (
+              <button className="btn btn-success btn-block">Pending</button>
+            )}
         </div>
       </div>
     </div>
   );
 };
 
-export default UserDetail;
+export default WithAuthConsumer(UserDetail);
