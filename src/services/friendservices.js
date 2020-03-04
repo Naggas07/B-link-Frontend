@@ -6,8 +6,7 @@ const pendings = id =>
 const friends = id =>
   http.get(`/friend/acepted/${id}`).then(users => users.data);
 
-const updateFriend = (id, updated) =>
-  http.put(`/friend/update//${id}`, updated);
+const updateFriend = (id, updated) => http.put(`/friend/update/${id}`, updated);
 
 let friendServices = {
   pendings,

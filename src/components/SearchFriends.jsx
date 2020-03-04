@@ -26,13 +26,14 @@ class SearchFriends extends Component {
       }
     });
   };
-
-  componentDidMount() {
-    const { id } = this.props.currentUser;
-    console.log(id);
+  refreshUsers(id) {
     UserServices.getUsers().then(users => this.setState({ users }));
     friendServices.friends(id).then(friends => this.setState({ friends }));
     friendServices.pendings(id).then(pendings => this.setState({ pendings }));
+  }
+
+  componentDidMount() {
+    this.refreshUsers(this.props.currentUser.id);
   }
 
   render() {
@@ -79,6 +80,7 @@ class SearchFriends extends Component {
                   key={i}
                   user={user}
                   friendship={this.state.pendings[i]}
+                  refreshUsers={this.refreshUsers}
                 />
               ))}
             </div>
@@ -93,6 +95,7 @@ class SearchFriends extends Component {
                   key={i}
                   user={user}
                   friendship={this.state.friends[i]}
+                  refreshUsers={this.refreshUsers}
                 />
               ))}
             </div>
@@ -102,7 +105,12 @@ class SearchFriends extends Component {
         <h3>Usuarios</h3>
         <div className="total-users-container">
           {this.state.users.map((user, i) => (
-            <UserDetail key={i} user={user} friendship={{}} />
+            <UserDetail
+              key={i}
+              user={user}
+              friendship={{}}
+              refreshUsers={this.refreshUsers}
+            />
           ))}
         </div>
       </div>

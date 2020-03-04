@@ -25,6 +25,7 @@
 .user-card {
   margin: 10px;
   width: 240px;
+  height: 302px;
   padding: 5px;
   background-color: rgb(182, 181, 181, 0.4);
   border-radius: 5px;
@@ -52,4 +53,22 @@
 
 .user-items > p {
   font-size: 0.7rem;
+}
+
+.total-pendings-container {
+  height: 320px;
+  overflow: scroll;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.total-friends-container {
+  height: 320px;
+  overflow: scroll;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
 }
