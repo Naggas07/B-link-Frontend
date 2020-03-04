@@ -12,6 +12,7 @@ import Home from "./components/user/Home";
 import Admin from "./components/user/Admin";
 import NewEvent from "./components/events/NewEvent";
 import EventDetail from "./components/events/EventDetail";
+import SearchFriends from "./components/SearchFriends";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/admin">
           <Admin />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/people">
+          <SearchFriends />
         </AuthenticatedRoute>
         <Route exact path="/login">
           <RegisterLoginContainer right={<Login />} />

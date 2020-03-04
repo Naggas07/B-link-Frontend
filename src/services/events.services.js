@@ -21,6 +21,14 @@ const eventDetail = id => http.get(`/events/${id}`).then(event => event.data);
 const eventByPosition = parameters =>
   http.post("/events/locations", parameters).then(events => events.data);
 
+const getComments = id =>
+  http.get(`/comments/${id}`).then(comments => comments.data);
+
+const createComment = data => {
+  console.info("data => ", data);
+  http.post(`/comments/new`, data).then(comment => comment.data);
+};
+
 let eventServices = {
   getEvents,
   newEvent,
@@ -29,7 +37,9 @@ let eventServices = {
   reserveEvent,
   unsuscribeEvent,
   eventDetail,
-  eventByPosition
+  eventByPosition,
+  getComments,
+  createComment
 };
 
 export default eventServices;
