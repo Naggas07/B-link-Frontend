@@ -12,3 +12,30 @@
 .container-total-use {
   padding: 5px;
 }
+
+.total-users-container {
+  height: 700px;
+  overflow: scroll;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-card {
+  width: 240px;
+}
+
+.card-img-container {
+  margin: 0 auto;
+  width: 80%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img-container > img {
+  height: 180px;
+}

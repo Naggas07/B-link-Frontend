@@ -12,13 +12,12 @@ const deleteEvent = id => http.delete(`/events/delete/${id}`);
 
 const reserveEvent = (id, user) => {
   return http.put(`/events/reserve/${id}`, user).then(updated => {
-    console.info("updated =>", updated);
     return updated.data;
   });
 };
 
-const unsuscribeEvent = id =>
-  http.put(`/events/reserve/${id}`).then(updated => updated.data);
+const unsuscribeEvent = (id, user) =>
+  http.put(`/events/unsuscribe/${id}`, user).then(updated => updated.data);
 
 const eventDetail = id => http.get(`/events/${id}`).then(event => event.data);
 

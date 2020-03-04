@@ -4,6 +4,7 @@ import UserServices from "../services/user.services";
 import "../styles/Friends.css";
 import friendServices from "../services/friendservices";
 import { WithAuthConsumer } from "../contexts/AuthContext";
+import UserDetail from "./UserDetail";
 
 class SearchFriends extends Component {
   state = {
@@ -37,9 +38,9 @@ class SearchFriends extends Component {
   render() {
     console.log(this.state.users);
     return (
-      <div className="container" onSubmit={this.handelSubmit}>
+      <div className="container">
         <div className="container form-user">
-          <form className="form-users">
+          <form className="form-users" onSubmit={this.handelSubmit}>
             <div className="form-group">
               <input
                 type="text"
@@ -55,11 +56,22 @@ class SearchFriends extends Component {
             </button>
           </form>
         </div>
-        <div className="header-events">
-          <h3>Mis Amigos</h3>
-        </div>
-        <div className="header-events">
-          <h3>Usuarios</h3>
+        {this.state.pendings.length > 0 && (
+          <div className="header-events">
+            <h3>{`Pendientes - ${this.state.pendings.length}`}</h3>
+          </div>
+        )}
+        {this.state.friends.length > 0 && (
+          <div className="header-events">
+            <h3>{`Mis Amigos - ${this.state.friends.length}`}</h3>
+          </div>
+        )}
+
+        <h3>Usuarios</h3>
+        <div className="total-users-container">
+          {this.state.users.map((user, i) => (
+            <UserDetail key={i} user={user} />
+          ))}
         </div>
       </div>
     );

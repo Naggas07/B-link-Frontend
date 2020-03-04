@@ -41,24 +41,10 @@ const EventResume = ({ event, currentUser }) => {
             </p>
           </div>
         </div>
-        {currentUser.userType === "Admin" && (
-          <div className="admin-buttons">
-            <button className="btn btn-danger">Borrar</button>
-          </div>
-        )}
 
-        {currentUser.userType === "Business" &&
-          currentUser.id === event.business && (
-            <div className="businness-buttons">
-              <button className="btn btn-success">Editar</button>
-            </div>
-          )}
-
-        {currentUser.userType === "User" && (
-          <div className="user-buttons">
-            <button className="btn btn-info">Detalles</button>
-          </div>
-        )}
+        <div className="user-buttons">
+          <button className="btn btn-secondary">Detalles</button>
+        </div>
       </div>
     </Link>
   );

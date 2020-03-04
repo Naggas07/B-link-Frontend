@@ -26,8 +26,22 @@ class SearchEvent extends Component {
   render() {
     return (
       <div className="container">
-        <div className="search-events">
-          <input type="text" />
+        <div className="container form-user">
+          <form className="form-users" onSubmit={this.handelSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control header-form"
+                name="text"
+                value={this.state.form.text}
+                onChange={this.handelChange}
+                autoComplete="off"
+              />
+            </div>
+            <button type="submit" className="btn btn-success">
+              Search
+            </button>
+          </form>
         </div>
 
         <div className="container topic-container">

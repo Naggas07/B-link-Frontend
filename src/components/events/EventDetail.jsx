@@ -4,6 +4,7 @@ import eventServices from "../../services/events.services";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import "../../styles/events/EventDetail.css";
 import UserResume from "../UserResume";
+import Comments from "../Comments";
 
 class EventDetail extends Component {
   constructor(props) {
@@ -74,6 +75,14 @@ class EventDetail extends Component {
       .then(event => this.setState({ event }));
   };
 
+  unsuscribe = () => {
+    const { id } = this.state.event;
+    const user = { user: this.props.currentUser.id };
+    eventServices
+      .unsuscribeEvent(id, user)
+      .then(event => this.setState({ event }));
+  };
+
   render() {
     const { event } = this.state;
 
@@ -114,22 +123,28 @@ class EventDetail extends Component {
                       <p className="item-resume">{`  ${event.price} €`}</p>
                     </div>
                   </div>
-                  {data.includes(this.props.currentUser.id) ? (
-                    <button
-                      className="btn btn-block btn-secondary"
-                      type="submit"
-                      onClick={this.reserve}
-                    >
-                      Desinscribirse
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-block btn-secondary"
-                      type="submit"
-                      onClick={this.reserve}
-                    >
-                      Reserve
-                    </button>
+                  {this.props.currentUser.userType !== "Business" && (
+                    <div className="reserve-ususcribe">
+                      {data.includes(this.props.currentUser.id) ? (
+                        <button
+                          className="btn btn-block btn-secondary"
+                          type="submit"
+                          onClick={this.unsuscribe}
+                        >
+                          Desinscribirse
+                        </button>
+                      ) : (
+                        event.limitUsers - event.reserves.length > 0 && (
+                          <button
+                            className="btn btn-block btn-secondary"
+                            type="submit"
+                            onClick={this.reserve}
+                          >
+                            Reserve
+                          </button>
+                        )
+                      )}
+                    </div>
                   )}
                 </div>
               )}
@@ -163,12 +178,6 @@ class EventDetail extends Component {
           </div>
           <div className="event-messages">
             <div className="buttons-container">
-              <button
-                className="btn btn-secondary mr-4"
-                onClick={this.handelComments}
-              >
-                Cargar comentarios
-              </button>
               <button
                 className="btn btn-warning"
                 data-toggle="modal"
@@ -224,8 +233,9 @@ class EventDetail extends Component {
             </div>
             {this.state.comments && (
               <div className="comments-container">
+                <h3>Comentarios</h3>
                 {this.state.comments.map((comment, i) => (
-                  <p key={i}>{comment.message}</p>
+                  <Comments key={i} comment={comment} />
                 ))}
               </div>
             )}
