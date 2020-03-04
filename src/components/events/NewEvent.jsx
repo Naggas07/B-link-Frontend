@@ -39,16 +39,6 @@ class NewEvent extends Component {
     formData.append("price", events.price);
     formData.append("business", events.business);
 
-    // fallaba el append
-    // formData.title = events.title;
-    // formData.topics = events.topics;
-    // formData.date = events.date;
-    // formData.image = events.image;
-    // formData.limitUser = events.limitUser;
-    // formData.hour = events.hour;
-    // formData.price = events.price;
-    // formData.business = events.business;
-
     console.log(formData);
 
     this.setState({ loading: true, error: false }, () => {
