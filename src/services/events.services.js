@@ -10,8 +10,10 @@ const userEvents = id =>
 
 const deleteEvent = id => http.delete(`/events/delete/${id}`);
 
-const reserveEvent = id =>
-  http.put(`/events/reserve/${id}`).then(updated => updated.data);
+const reserveEvent = (id, user) => {
+  console.info("user", user);
+  http.put(`/events/reserve/${id}`, user).then(updated => updated.data);
+};
 
 const unsuscribeEvent = id =>
   http.put(`/events/reserve/${id}`).then(updated => updated.data);
