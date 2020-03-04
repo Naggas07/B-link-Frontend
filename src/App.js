@@ -14,7 +14,6 @@ import NewEvent from "./components/events/NewEvent";
 import EventDetail from "./components/events/EventDetail";
 
 function App() {
-  console.info('dot env => ', process.env.REACT_APP_GOOGLE_MAPS_API)
   return (
     <div className="App">
       <Nabvar logo={logo} />

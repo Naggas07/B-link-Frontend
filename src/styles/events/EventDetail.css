@@ -21,3 +21,65 @@
   font-size: 6rem;
   color: aliceblue;
 }
+.event-details {
+  width: 100%;
+  padding: 25px 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-description {
+  width: 60%;
+  height: 100%;
+}
+.business-data {
+  width: 38%;
+}
+
+.business-details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.business-details img {
+  max-width: 40%;
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.container-total-user {
+  width: 60px;
+  padding: 5px;
+}
+
+.resume-user-name {
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+  margin: auto;
+}
+
+.reserves {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid black;
+}
+
+.item-resume-detail {
+  width: 30%;
+  text-align: center;
+}
+
+.item-resume {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.describe-event {
+  padding: 20px 0;
+  text-align: justify;
+}

@@ -17,7 +17,8 @@ class NewEvent extends Component {
       hour: "",
       limitUser: 0,
       price: 0,
-      business: this.props.currentUser.id
+      business: this.props.currentUser.id,
+      describe: ""
     },
     loading: false,
     error: false,
@@ -38,6 +39,7 @@ class NewEvent extends Component {
     formData.append("hour", events.hour);
     formData.append("price", events.price);
     formData.append("business", events.business);
+    formData.append("describe", events.describe);
 
     console.log(formData);
 
@@ -86,6 +88,17 @@ class NewEvent extends Component {
               className="form-control"
               name="title"
               value={this.state.events.title}
+              onChange={this.handleChange}
+              autoComplete="off"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="describe">Descripción del evento</label>
+            <textarea
+              rows="3"
+              className="form-control"
+              name="describe"
+              value={this.state.events.describe}
               onChange={this.handleChange}
               autoComplete="off"
             />
