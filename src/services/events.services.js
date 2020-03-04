@@ -11,8 +11,10 @@ const userEvents = id =>
 const deleteEvent = id => http.delete(`/events/delete/${id}`);
 
 const reserveEvent = (id, user) => {
-  console.info("user", user);
-  http.put(`/events/reserve/${id}`, user).then(updated => updated.data);
+  return http.put(`/events/reserve/${id}`, user).then(updated => {
+    console.info("updated =>", updated);
+    return updated.data;
+  });
 };
 
 const unsuscribeEvent = id =>
@@ -28,7 +30,7 @@ const getComments = id =>
 
 const createComment = data => {
   console.info("data => ", data);
-  http.post(`/comments/new`, data).then(comment => comment.data);
+  return http.post(`/comments/new`, data).then(comment => comment.data);
 };
 
 let eventServices = {

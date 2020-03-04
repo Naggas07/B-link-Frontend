@@ -4,13 +4,14 @@ import eventServices from "../../services/events.services";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import "../../styles/events/EventDetail.css";
 import UserResume from "../UserResume";
-import { Redirect } from "react-router-dom";
 
 class EventDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: [],
+      event: {
+        reserves: []
+      },
       comments: [],
       newComment: {
         event: "",
@@ -65,20 +66,18 @@ class EventDetail extends Component {
   reserve = event => {
     event.preventDefault();
     const { id } = this.state.event;
-    const user = this.props.currentUser.id;
+    const user = { user: this.props.currentUser.id };
 
-    const formData = new FormData();
-    formData.append("user", this.props.currentUser.id);
-
-    console.log(user);
+    console.log(eventServices);
     eventServices
-      .reserveEvent(id, this.props.currentUser.id)
+      .reserveEvent(id, user)
       .then(event => this.setState({ event }));
   };
 
   render() {
-    console.log(this.state);
     const { event } = this.state;
+
+    const data = event.reserves.map(user => user.id);
     return (
       <div className="container-event">
         <div className="container-image">
@@ -115,14 +114,23 @@ class EventDetail extends Component {
                       <p className="item-resume">{`  ${event.price} €`}</p>
                     </div>
                   </div>
-                  {/* me queda realizar el filter */}
-                  <button
-                    className="btn btn-block btn-secondary"
-                    type="submit"
-                    onClick={this.reserve}
-                  >
-                    Reserve
-                  </button>
+                  {data.includes(this.props.currentUser.id) ? (
+                    <button
+                      className="btn btn-block btn-secondary"
+                      type="submit"
+                      onClick={this.reserve}
+                    >
+                      Desinscribirse
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-block btn-secondary"
+                      type="submit"
+                      onClick={this.reserve}
+                    >
+                      Reserve
+                    </button>
+                  )}
                 </div>
               )}
               <div className="describe-event">
@@ -140,16 +148,17 @@ class EventDetail extends Component {
                   </div>
                 </Fragment>
               )}
-              {this.state.event.reserves && (
-                <div className="event-users">
-                  <h3>Van a asistir:</h3>
-                  <div className="user-containers">
-                    {event.reserves.map((user, i) => {
-                      return <UserResume user={user} key={i} />;
-                    })}
+              {this.state.event.reserves &&
+                this.state.event.reserves.length > 0 && (
+                  <div className="event-users">
+                    <h3>Van a asistir:</h3>
+                    <div className="user-containers">
+                      {event.reserves.map((user, i) => {
+                        return <UserResume user={user} key={i} />;
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           </div>
           <div className="event-messages">

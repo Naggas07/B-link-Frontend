@@ -83,3 +83,9 @@
   padding: 20px 0;
   text-align: justify;
 }
+
+.user-containers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

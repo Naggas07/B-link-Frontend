@@ -8,3 +8,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.container-total-use {
+  padding: 5px;
+}
