@@ -9,7 +9,6 @@ const EventResume = ({ event, currentUser }) => {
     year: "numeric",
     month: "long",
     day: "numeric",
-    hour: "numeric",
     hour12: "false"
   };
 

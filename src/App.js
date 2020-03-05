@@ -14,6 +14,7 @@ import NewEvent from "./components/events/NewEvent";
 import EventDetail from "./components/events/EventDetail";
 import SearchFriends from "./components/SearchFriends";
 import FollowResume from "./components/FollowResume";
+import Followers from "./components/Followers";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/people">
           <SearchFriends />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/followers">
+          <Followers />
         </AuthenticatedRoute>
         <Route exact path="/login">
           <RegisterLoginContainer

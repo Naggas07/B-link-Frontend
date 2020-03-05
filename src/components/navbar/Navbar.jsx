@@ -25,15 +25,17 @@ const Nabvar = ({ logo, currentUser, logout }) => {
                   Events
                 </NavLink>
               </li>
-              <li className="nav-item active">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="font-weight-bold"
-                  to="/people"
-                >
-                  Friends
-                </NavLink>
-              </li>
+              {currentUser.userType !== "Business" && (
+                <li className="nav-item active">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="font-weight-bold"
+                    to="/people"
+                  >
+                    Friends
+                  </NavLink>
+                </li>
+              )}
               {currentUser.userType !== "Business" && (
                 <li className="nav-item active">
                   <NavLink
@@ -54,6 +56,17 @@ const Nabvar = ({ logo, currentUser, logout }) => {
                     to="/admin"
                   >
                     Admin
+                  </NavLink>
+                </li>
+              )}
+              {currentUser.userType === "Business" && (
+                <li className="nav-item active">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="font-weight-bold"
+                    to="/followers"
+                  >
+                    Followers
                   </NavLink>
                 </li>
               )}

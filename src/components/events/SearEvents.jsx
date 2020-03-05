@@ -38,7 +38,9 @@ class SearchEvent extends Component {
     event.preventDefault();
     const { search } = this.state.form;
     const name = !search ? "no-text" : search;
-
+    if (name === "no-text") {
+      window.location.reload();
+    }
     eventServices.searchEvent(name).then(events => this.setState({ events }));
   };
 
@@ -80,12 +82,6 @@ class SearchEvent extends Component {
           )}
           <div className="header-events">
             <h3>Eventos</h3>
-            {this.props.currentUser.userType === "Admin" ||
-              (this.props.currentUser.userType === "Business" && (
-                <a href="/events/new" className="btn btn-dark">
-                  Create
-                </a>
-              ))}
           </div>
           {this.state.events.map((event, i) => (
             <EventResume key={i} event={event} />

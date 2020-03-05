@@ -111,7 +111,7 @@ class Home extends Component {
             )}
             {this.state.followers.length > 0 && (
               <div className="user-follows">
-                <h3 className="header-home">Tes iguen</h3>
+                <h3 className="header-home">Te siguen</h3>
                 <div className="follow-home-container">
                   {this.state.followers.map((follow, i) => (
                     <BusinessDetail
