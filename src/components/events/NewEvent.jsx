@@ -114,9 +114,9 @@ class NewEvent extends Component {
               id="image"
             />
           </div>
-          <div className="container map-container-event">
+          {/* <div className="container map-container-event">
             <Map />
-          </div>
+          </div> */}
           <div className="form-group container">
             <div className="row">
               <legend className="col-form-label col-sm-2 pt-0">

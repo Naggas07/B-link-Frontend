@@ -140,10 +140,12 @@ class RegisterUser extends Component {
             id="avatar"
           />
         </div>
-        <button type="submit" className="btn btn-block btn-primary">
+        <button type="submit" className="btn btn-block primary-color">
           Submit
         </button>
-        <a href="/login">Back to login</a>
+        <a className="primary-a" href="/login">
+          Back to login
+        </a>
       </form>
     );
   }

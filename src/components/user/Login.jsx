@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "../../styles/Forms.css";
+import "../../styles/RegisterLoginContainer.css";
 import UserServices from "../../services/user.services";
 import { Fragment } from "react";
 import { Redirect } from "react-router-dom";
@@ -73,14 +74,14 @@ class Login extends Component {
               autoComplete="off"
             />
           </div>
-          <button type="submit" className="btn btn-block btn-primary">
+          <button type="submit" className="btn btn-block primary-color">
             Login
           </button>
           <div className="container-register-links">
-            <a className="mt-5" href="/register">
+            <a className="mt-5 primary-a" href="/register">
               Create Account
             </a>
-            <a className="mt-5" href="/business">
+            <a className="mt-5 primary-a" href="/business">
               Are you a business?
             </a>
           </div>

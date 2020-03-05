@@ -1,5 +1,6 @@
 .navbar {
   height: 70px;
+  background-color: rgb(5, 117, 42);
 }
 
 .user-nav {
@@ -56,4 +57,14 @@
   margin-top: 8px;
   text-decoration: none;
   list-style: none;
+}
+
+.nav-link {
+  color: white;
+  font-weight: bold;
+}
+
+.nickname {
+  color: white;
+  font-weight: bold;
 }

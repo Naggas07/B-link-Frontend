@@ -43,13 +43,29 @@ function App() {
           <SearchFriends />
         </AuthenticatedRoute>
         <Route exact path="/login">
-          <RegisterLoginContainer right={<Login />} />
+          <RegisterLoginContainer
+            right={<Login />}
+            left={
+              "https://i.pinimg.com/originals/e2/b2/0d/e2b20d4e1c5b1cdb1383338ef9030ad7.jpg"
+            }
+          />
         </Route>
         <Route exact path="/register">
-          <RegisterLoginContainer right={<RegisterUser type="User" />} />
+          <RegisterLoginContainer
+            right={<RegisterUser type="User" />}
+            left={
+              "https://www.sevillametal.org/web/images/img/2020/cronicas/magodeoz/0J5A7480_copy.jpg"
+            }
+          />
         </Route>
         <Route exact path="/business">
-          <RegisterLoginContainer right={<RegisterUser type="Business" />} />
+          <RegisterLoginContainer
+            right={<RegisterUser type="Business" />}
+            left={
+              "https://www.agronewscomunitatvalenciana.com/sites/default/files/articles/Passive_Idai1.jpg"
+            }
+          />
+          />
         </Route>
         <Redirect to="/login" />
       </Switch>

@@ -3,3 +3,14 @@
   justify-content: start;
   align-items: flex-start;
 }
+
+.margenes {
+  margin: 15px 0;
+}
+
+.header-home {
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 5px;
+  border-bottom: 2px solid black;
+}

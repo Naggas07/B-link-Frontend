@@ -35,6 +35,12 @@ const createComment = data => {
 const searchEvent = name =>
   http.get(`/events/search/${name}`).then(events => events.data);
 
+const businessEvents = id =>
+  http.get(`/events/business/${id}`).then(events => events.data);
+
+const followers = id =>
+  http.get(`/follow/followers/${id}`).then(events => events.data);
+
 let eventServices = {
   getEvents,
   newEvent,
@@ -46,7 +52,9 @@ let eventServices = {
   eventByPosition,
   getComments,
   createComment,
-  searchEvent
+  searchEvent,
+  businessEvents,
+  followers
 };
 
 export default eventServices;

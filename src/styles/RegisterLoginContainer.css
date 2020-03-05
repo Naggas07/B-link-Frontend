@@ -3,17 +3,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  border: 2px solid rgb(5, 117, 42);
   min-height: 700px;
 }
 
 .form-media-item {
   width: 50%;
-  min-width: 50%;
 }
 
 .container-register-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.primary-color {
+  background-color: rgb(5, 117, 42) !important;
+  font-weight: bold !important;
+  color: white !important;
+}
+
+.primary-a {
+  color: rgb(5, 117, 42) !important;
+}
+
+.image-container-form {
+  max-width: 100%;
+  max-height: 700px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -1.5%;
+}
+
+.image-container-form > img {
+  min-height: 700px;
 }

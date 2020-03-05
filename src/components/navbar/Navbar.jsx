@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Nabvar = ({ logo, currentUser, logout }) => {
   return (
-    <nav className="navbar navbar-light bg-light sticky-top">
+    <nav className="navbar navbar-light sticky-top">
       <div className="main-nav">
         <a className="navbar-brand" href="/">
           <img src={logo} width="50" height="50" alt="logo" />
@@ -68,7 +68,7 @@ const Nabvar = ({ logo, currentUser, logout }) => {
               <img src={currentUser.avatar} alt="avatar" />
             </div>
 
-            <p>{currentUser.nickName}</p>
+            <p className="nickname">{currentUser.nickName}</p>
           </div>
           <button type="submit" onClick={logout} className="btn btn-danger">
             Logout

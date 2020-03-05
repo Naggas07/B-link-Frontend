@@ -11,7 +11,9 @@ class Home extends Component {
   state = {
     friends: [],
     events: [],
-    follows: []
+    follows: [],
+    business: [],
+    followers: []
   };
 
   allData = () => {
@@ -19,6 +21,10 @@ class Home extends Component {
     friendServices.friends(id).then(friends => this.setState({ friends }));
     friendServices.follows(id).then(follows => this.setState({ follows }));
     eventServices.userEvents(id).then(events => this.setState({ events }));
+    eventServices
+      .businessEvents(id)
+      .then(business => this.setState({ business }));
+    eventServices.followers(id).then(followers => this.setState({ followers }));
   };
 
   componentDidMount() {
@@ -26,11 +32,24 @@ class Home extends Component {
   }
 
   render() {
+    const { events, business, followers, follows, friends } = this.state;
+    const moves =
+      events.length > 0 ||
+      business.length > 0 ||
+      followers.length > 0 ||
+      follows.length > 0 ||
+      friends.length > 0;
+    console.log(moves);
     return (
       <Fragment>
-        {this.props.currentUser.userType !== "Business" && (
+        {!moves && (
           <div className="container">
-            {this.state.events && (
+            <h1>Sin movimientos</h1>{" "}
+          </div>
+        )}
+        {this.props.currentUser.userType !== "Business" && (
+          <div className="container margenes">
+            {this.state.events.length > 0 && (
               <div className="events-resume-container">
                 <h3 className="header-home">Mis eventos</h3>
                 {this.state.events.map((event, i) => (
@@ -39,7 +58,7 @@ class Home extends Component {
               </div>
             )}
 
-            {this.state.follows && (
+            {this.state.follows.length > 0 && (
               <div className="user-follows">
                 <h3 className="header-home">Empresas seguidas</h3>
                 <div className="follow-home-container">
@@ -56,7 +75,7 @@ class Home extends Component {
               </div>
             )}
 
-            {this.state.friends && (
+            {this.state.friends.length > 0 && (
               <div className="user-follows">
                 <h3 className="header-home">Amigos</h3>
                 <div className="follow-home-container">
@@ -81,7 +100,32 @@ class Home extends Component {
         )}
 
         {this.props.currentUser.userType === "Business" && (
-          <div className="container"></div>
+          <div className="container margenes">
+            {this.state.business.length > 0 && (
+              <div className="events-resume-container">
+                <h3 className="header-home">Mis eventos</h3>
+                {this.state.business.map((event, i) => (
+                  <EventResume key={i} event={event} />
+                ))}
+              </div>
+            )}
+            {this.state.followers.length > 0 && (
+              <div className="user-follows">
+                <h3 className="header-home">Tes iguen</h3>
+                <div className="follow-home-container">
+                  {this.state.followers.map((follow, i) => (
+                    <BusinessDetail
+                      key={i}
+                      user={follow.userFollow}
+                      date={follow.createdAt}
+                      updated={this.updated}
+                      follows={{ user: "ok" }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </Fragment>
     );
