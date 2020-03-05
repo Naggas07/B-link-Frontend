@@ -1,7 +1,6 @@
 import React from "react";
 import { WithAuthConsumer } from "../contexts/AuthContext";
 import friendServices from "../services/friendservices";
-import { Redirect } from "react-router-dom";
 
 const UserDetail = ({ user, friendship, currentUser, refreshUsers }) => {
   let convertTime = date => {
@@ -10,13 +9,23 @@ const UserDetail = ({ user, friendship, currentUser, refreshUsers }) => {
       1}/${newDate.getFullYear()}`;
   };
 
-  let redirect = "";
   const updateFriend = friendId => {
     const toUpdated = {
       userId: currentUser.id,
       toUpdate: "Acepted"
     };
     friendServices.updateFriend(friendId, toUpdated).then(() => {
+      window.location.reload();
+    });
+  };
+
+  const createFriendship = () => {
+    const friendship = {
+      user1: currentUser.id,
+      user2: user.id
+    };
+
+    friendServices.newFriend(friendship).then(() => {
       window.location.reload();
     });
   };
@@ -31,14 +40,17 @@ const UserDetail = ({ user, friendship, currentUser, refreshUsers }) => {
         <p>{`${user.name} ${user.lastName1} ${user.lastName2}`}</p>
         <div className="button-card">
           {!friendship.state1 && (
-            <button className="btn btn-success btn-block">
+            <button
+              className="btn btn-success btn-block"
+              onClick={() => createFriendship()}
+            >
               Solicitar Amistad
             </button>
           )}
           {friendship.state1 === "Pending" &&
             currentUser.id === friendship.user1.id && (
               <button
-                className="btn btn-success btn-block"
+                className="btn btn-success btn-block "
                 onClick={() => updateFriend(friendship.id)}
               >
                 Pending
@@ -56,12 +68,12 @@ const UserDetail = ({ user, friendship, currentUser, refreshUsers }) => {
 
           {friendship.state2 === "Pending" &&
             currentUser.id === friendship.user1.id && (
-              <button className="btn btn-secondary btn-block disabled">{`Pending to: ${friendship.user2.nickName}`}</button>
+              <button className="btn create-friend btn-secondary btn-block disabled">{`Pending to: ${friendship.user2.nickName}`}</button>
             )}
 
           {friendship.state1 === "Pending" &&
             currentUser.id === friendship.user2.id && (
-              <button className="btn btn-secondary btn-block disabled">{`Pending to: ${friendship.user1.nickName}`}</button>
+              <button className="btn create-friend btn-secondary btn-block disabled">{`Pending to: ${friendship.user1.nickName}`}</button>
             )}
 
           {friendship.state1 === "Acepted" &&

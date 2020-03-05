@@ -27,10 +27,29 @@ class SearchFriends extends Component {
     });
   };
   refreshUsers(id) {
-    UserServices.getUsers().then(users => this.setState({ users }));
     friendServices.friends(id).then(friends => this.setState({ friends }));
     friendServices.pendings(id).then(pendings => this.setState({ pendings }));
+    UserServices.getUsers().then(users => {
+      let noRelation = users.filter(user => {
+        console.log(user);
+        return !this.state.friends.includes(user);
+      });
+      console.log("no relation", noRelation, users);
+      this.setState({ users });
+    });
   }
+
+  reset = () => {
+    window.location.reload();
+    UserServices.getUsers().then(users => this.setState(users));
+  };
+
+  handelSubmit = event => {
+    event.preventDefault();
+    const { text } = this.state.form;
+
+    friendServices.searchUser(text).then(users => this.setState({ users }));
+  };
 
   componentDidMount() {
     this.refreshUsers(this.props.currentUser.id);
@@ -68,6 +87,9 @@ class SearchFriends extends Component {
             </div>
             <button type="submit" className="btn btn-success">
               Search
+            </button>
+            <button className="btn btn-secondary" onClick={this.reset}>
+              All Users
             </button>
           </form>
         </div>
@@ -112,6 +134,7 @@ class SearchFriends extends Component {
               refreshUsers={this.refreshUsers}
             />
           ))}
+          {this.state.users.length < 1 && <h3>Usuarios no encontrados</h3>}
         </div>
       </div>
     );

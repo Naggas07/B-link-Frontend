@@ -13,6 +13,7 @@ import Admin from "./components/user/Admin";
 import NewEvent from "./components/events/NewEvent";
 import EventDetail from "./components/events/EventDetail";
 import SearchFriends from "./components/SearchFriends";
+import FollowResume from "./components/FollowResume";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/events">
           <SearchEvent />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/follows">
+          <FollowResume />
         </AuthenticatedRoute>
         <AuthenticatedRoute path="/admin">
           <Admin />

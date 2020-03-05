@@ -8,10 +8,25 @@ const friends = id =>
 
 const updateFriend = (id, updated) => http.put(`/friend/update/${id}`, updated);
 
+const newFriend = friendship =>
+  http.post("/friend/new", friendship).then(friendship => friendship.data);
+
+const searchUser = name =>
+  http.get(`/friend/search/${name}`).then(users => users.data);
+
+const newFollow = data =>
+  http.post("/follow/new", data).then(follow => follow.data);
+
+const follows = id =>
+  http.get(`/follow/userFollows/${id}`).then(follows => follows.data);
 let friendServices = {
   pendings,
   friends,
-  updateFriend
+  updateFriend,
+  newFriend,
+  searchUser,
+  newFollow,
+  follows
 };
 
 export default friendServices;
