@@ -32,6 +32,9 @@ const createComment = data => {
   return http.post(`/comments/new`, data).then(comment => comment.data);
 };
 
+const searchEvent = name =>
+  http.get(`/events/search/${name}`).then(events => events.data);
+
 let eventServices = {
   getEvents,
   newEvent,
@@ -42,7 +45,8 @@ let eventServices = {
   eventDetail,
   eventByPosition,
   getComments,
-  createComment
+  createComment,
+  searchEvent
 };
 
 export default eventServices;

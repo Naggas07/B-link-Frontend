@@ -13,6 +13,17 @@ class SearchEvent extends Component {
     }
   };
 
+  handelChange = event => {
+    const { name, value, files } = event.target;
+
+    this.setState({
+      form: {
+        ...this.state.form,
+        [name]: files ? files[0] : value
+      }
+    });
+  };
+
   componentDidMount() {
     TopicSevices.activeTopics().then(topics =>
       this.setState({
@@ -23,6 +34,14 @@ class SearchEvent extends Component {
     eventServices.getEvents().then(events => this.setState({ events }));
   }
 
+  handelSubmit = event => {
+    event.preventDefault();
+    const { search } = this.state.form;
+    const name = !search ? "no-text" : search;
+
+    eventServices.searchEvent(name).then(events => this.setState({ events }));
+  };
+
   render() {
     return (
       <div className="container">
@@ -32,8 +51,8 @@ class SearchEvent extends Component {
               <input
                 type="text"
                 className="form-control header-form"
-                name="text"
-                value={this.state.form.text}
+                name="search"
+                value={this.state.form.search}
                 onChange={this.handelChange}
                 autoComplete="off"
               />
