@@ -119,3 +119,13 @@
   font-weight: bold;
   color: dimgray;
 }
+
+.title-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.title-container > h6 {
+  width: 80%;
+}

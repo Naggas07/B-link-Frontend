@@ -32,7 +32,7 @@ class NewEvent extends Component {
     console.log(events);
     const formData = new FormData();
     formData.append("title", events.title);
-    formData.append("topics", events.topics);
+    formData.append("topics", [events.topics]);
     formData.append("date", events.date);
     formData.append("image", events.image);
     formData.append("limitUsers", parseInt(events.limitUser));
@@ -120,13 +120,18 @@ class NewEvent extends Component {
           <div className="form-group container">
             <div className="row">
               <legend className="col-form-label col-sm-2 pt-0">
-                Temas relacionados
+                Tema Principal
               </legend>
               <div className="container-checks">
                 {this.state.topics.map((check, i) => {
                   return (
                     <div key={i} className="form-check check-style">
-                      <input type="radio" />
+                      <input
+                        type="radio"
+                        value={check.name}
+                        name="topics"
+                        onChange={this.handleChange}
+                      />
                       <label htmlFor="">{check.name}</label>
                     </div>
                   );

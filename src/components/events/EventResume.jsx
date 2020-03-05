@@ -21,7 +21,11 @@ const EventResume = ({ event, currentUser }) => {
           <img src={event.image} alt="event" />
         </div>
         <div className="resume-info-container">
-          <h6>{event.title}</h6>
+          <div className="title-container">
+            <h6>{event.title}</h6>
+            <span className="badge badge-info">{event.topics[0]}</span>
+          </div>
+
           <p>{new Date(event.date).toLocaleString("es-ES", options)}</p>
           <div className="event-item-list">
             <p>

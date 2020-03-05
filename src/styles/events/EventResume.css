@@ -1,12 +1,14 @@
 .resume-container {
+  padding: 5px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 100px;
   margin: 15px 0;
   text-decoration: none;
   pointer-events: none;
+  color: black;
+  border-bottom: 1px solid grey;
 }
 
 .image-container {

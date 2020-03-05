@@ -63,13 +63,13 @@ class SearchEvent extends Component {
           </form>
         </div>
 
-        <div className="container topic-container">
+        {/* <div className="container topic-container">
           {this.state.topics.map((topic, i) => (
             <span key={i} className="badge badge-pill badge-info">
               {topic.name}
             </span>
           ))}
-        </div>
+        </div> */}
 
         <div className="container">
           {(this.props.currentUser.userType === "Admin" ||
